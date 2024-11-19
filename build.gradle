@@ -5,7 +5,7 @@ plugins {
 }
 
 group = 'com.doosan'
-version = '0.0.1'
+version = '2024-11-19-03-08'
 
 java {
 	toolchain {

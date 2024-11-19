@@ -7,5 +7,7 @@ import java.util.List;
 
 public interface ItemRepository extends JpaRepository<Item, Long> {
     List<Item> findAllByOrderByIdDesc();
+
     List<Item> findAllByContentContainingOrderByIdDesc(String keyword);
+
 }
