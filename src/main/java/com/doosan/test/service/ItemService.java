@@ -41,15 +41,12 @@ public class ItemService {
 
     }
 
-    public List<ItemResponseDto> getItemsByKeyword(String keyword) {
-        System.out.println("getItemsByKeyword" + keyword);
-        return itemRepository.findAllByContentContainingOrderByIdDesc(keyword).stream().map(ItemResponseDto::new).toList();
-    }
+
 
     @Transactional
     public ItemResponseEditDto updateItem(Long id, ItemRequestDto requestDto) {
         Item item = itemRepository.findById(id).orElseThrow(
-                () -> new IllegalArgumentException("Item not found")
+                () -> new IllegalArgumentException("아이템 없음")
         );
         item.update(requestDto);
         Item updatedItem = itemRepository.save(item);
