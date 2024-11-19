@@ -2,6 +2,7 @@ package com.doosan.test.entity;
 
 import jakarta.persistence.*;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.time.LocalDateTime;
@@ -9,6 +10,7 @@ import java.time.LocalDateTime;
 @Setter
 @Getter
 @Entity
+@NoArgsConstructor
 @Table(name = "BlackList")
 public class BlackList {
 
@@ -23,7 +25,7 @@ public class BlackList {
     private LocalDateTime unblockedAt; // 차단 해제 시간
 
     @Column(name = "is_blocked", nullable = false)
-    private boolean isBlocked; // 차단 상태
+    private Boolean isBlocked; // 차단 상태 (Boolean 객체로 변경)
 
     @Column(name = "block_count", nullable = false)
     private int blockCount; // 차단 횟수
@@ -38,10 +40,9 @@ public class BlackList {
     private String reason; // 차단 이유
 
     @Column(name = "block_duration")
-    private int blockDuration; // 차단 기간 (단위: 시간)
+    private Integer blockDuration; // 차단 기간 (단위: 시간, Integer로 변경)
 
     @Column(name = "comments")
     private String comments; // 추가 설명
 
-    // Getters and Setters
 }

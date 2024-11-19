@@ -13,7 +13,6 @@ import java.util.*;
 import java.util.concurrent.TimeUnit;
 import org.slf4j.Logger;
 
-// IpFilter를 수정하여, 요청을 많이 보낸 IP를 추적하고, 일정 기준 이상일 경우 차단
 @Component
 public class IpFilter extends OncePerRequestFilter {
 
@@ -64,10 +63,9 @@ public class IpFilter extends OncePerRequestFilter {
 
     public void unblockIp(String ip) {
         if (!blockedIps.contains(ip)) {
-            logger.warn("이 IP : {} 주소는 차단된 아이피가 아님.", ip);
+            logger.warn("This IP: {} is not blocked.", ip);
             return;
         }
-
 
         blockedIps.remove(ip); // 차단된 IP 제거
         ipRequestTimes.remove(ip); // IP에 대한 요청 기록 삭제
@@ -76,5 +74,4 @@ public class IpFilter extends OncePerRequestFilter {
     public Set<String> getBlockedIps() {
         return blockedIps;
     }
-
 }
